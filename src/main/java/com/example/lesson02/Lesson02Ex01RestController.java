@@ -18,6 +18,8 @@ DB연동 : View영역 <--> Controller영역(Domain) <--> Service(BO)영역 <--> 
 @RestController
 public class Lesson02Ex01RestController {
 
+	/*2-1 : DB 연동과 스프링 동작 흐름*/
+	
 	// 어노테이션(Annotation)
 	@Autowired // DI(Dependency Injection) : 의존성 주입
 	private UsedGoodsBo usedGoodsBo;
