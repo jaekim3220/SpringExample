@@ -5,6 +5,8 @@
 
 <!-- DB영역 -->
 <mapper namespace="com.example.lesson03.mapper.ReviewMapper">
+
+	<!-- MyBatis 예제 1-1(SELECT) -->
 	<select id="selectReviewById" parameterType="int" resultType="com.example.lesson03.domain.Review">
 		SELECT 
 			`id`,
@@ -20,4 +22,53 @@
 		WHERE 
 			`id` = #{id}
 	</select>
+	
+	<!-- MyBatis 1-2 예제1 : 객체화(INSERT) -->
+	<insert id="insertReview" parameterType="com.example.lesson03.domain.Review">
+		INSERT INTO `new_review`
+		(
+			`storeId`,
+			`menu`,
+			`userName`,
+			`point`,
+			`review`,
+			`createdAt`,
+			`updatedAt`
+		)
+		VALUES
+		(
+		#{storeId}, 
+		#{menu}, 
+		#{userName}, 
+		#{point}, 
+		#{review}, 
+		NOW(),
+		NOW()
+		)
+	</insert>
+	
+	<!-- MyBatis 1-2 예제2 : (INSERT) -->
+	<insert id="insertReviewAsField" parameterType="map">
+		INSERT INTO `new_review`
+		(
+			`storeId`,
+			`menu`,
+			`userName`,
+			`point`,
+			`review`,
+			`createdAt`,
+			`updatedAt`
+		)
+		VALUES
+		(
+		#{storeId}, 
+		#{menu}, 
+		#{userName}, 
+		#{point}, 
+		#{review}, 
+		NOW(),
+		NOW()
+		)
+	</insert>
+	
 </mapper>

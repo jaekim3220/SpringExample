@@ -19,11 +19,26 @@ public class ReviewBo {
 	@Autowired // DI(Dependency Injection) : 의존성 주입
 	private ReviewMapper reviewMapper;
 	
-	// input : None. 컨트롤러(Domain)한테 받는다
+	// input : int(id). 컨트롤러(Domain)한테 받는다
 	// output : 컨트롤러한테 제공. Review 단건. 없으면 null.
+	// MyBatis 예제 1-1(SELECT)
 	public Review getReviewById(int id) {
 		return reviewMapper.selectReviewById(id);
 	}
 	
 	
+	// input : Review
+	// output : int(수정된 행의 갯수) => Mybatis가 성공된 행의 갯수를 제공
+	// MyBatis 1-2 예제1 : 객체화(INSERT)
+	public int addReview(Review review) {
+		return reviewMapper.insertReview(review);
+	}
+	
+	// input : Parameter들
+	// output : int(수정된 행의 갯수) => Mybatis가 성공된 행의 갯수를 제공
+	// MyBatis 1-2 예제2
+	public int addReviewAsField(int storeId, String menu,
+			String userName, Double point, String review) {
+		return reviewMapper.insertReviewAsField(storeId, menu, userName, point, review);
+	}
 }
