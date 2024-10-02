@@ -1,5 +1,6 @@
 package com.example.lesson03.bo;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,22 @@ public class ReviewBo {
 	public int addReviewAsField(int storeId, String menu,
 			String userName, Double point, String review) {
 		return reviewMapper.insertReviewAsField(storeId, menu, userName, point, review);
+	}
+	
+	
+	// input : id, review
+	// output : int(수정된 행의 갯수) => Mybatis가 성공된 행의 갯수를 제공
+	// MyBatis 3-3 예제
+	public int updateReviewByID(int id, String review) {
+		return reviewMapper.updateReviewById(id, review);
+	}
+	
+	
+	// input : id
+	// output : int(수정된 행의 갯수) => Mybatis가 성공된 행의 갯수를 제공
+	// MyBatis 3-4 예제 : DELETE
+	public void deleteReviewById(int id) {
+		// void로 메서드를 생성할 경우 return 값이 주어지지 않음
+		reviewMapper.deleteReviewById(id);
 	}
 }
