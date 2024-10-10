@@ -3,6 +3,7 @@ package com.example.lesson04.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.lesson04.domain.User;
 import com.example.lesson04.mapper.UserMapper;
 
 /*
@@ -27,5 +28,12 @@ public class UserBO {
 		// void로 진행할 경우 return 값이 주어지지 않아 변경한 행의 수가 return 되지 않음
 		userMapper.insertUser(name, yyyymmdd, email, introduce);
 	}
-
+	
+	
+	// input : X
+	// output : User or Null
+	// MVC Cycle 4-2 예제 : (방금 가입한 학생의 id pk 가져오기)
+	public User getLatestUser() {
+		return userMapper.selectLatestUser();
+	}
 }
