@@ -16,6 +16,13 @@ DB연동 : View영역 <--> Controller영역(Domain) <--> Service(BO)영역 <--> 
 
 // View영역
 
+/*
+<Response 방법 - 서버 기준>
+@Controller + return String => ViewResolver => HTML 파일 렌더링(Model) => HTML
+@Controller + @ResponseBody return String => HTTPMessageConverter => HTML
+@Controller + @ResponseBody return 객체(map, list) => HTTPMessageConverter => jackson => JSON
+@RestController return map => JSON
+*/
 @RequestMapping("/lesson04/ex02")
 @Controller // HTML 경로일 경우 @ResponseBody가 없다
 public class Lesson04Ex02Controller {
