@@ -1,6 +1,10 @@
 package com.example.lesson05;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +24,14 @@ DB연동 : View영역 <--> Controller영역(Domain) <--> Service(BO)영역 <--> 
 @Controller // HTML 경로일 경우 @ResponseBody가 없다
 public class Lesson05Controller {
 
+	// 5-1 변수와 조건문
 	@GetMapping("/ex01")
 	public String ex01() {
 		return "lesson05/ex01";
 	}
 	
+	
+	// 5-2 반복문
 	@GetMapping("/ex02")
 	public String ex02(Model model) {
 		
@@ -56,4 +63,27 @@ public class Lesson05Controller {
 		
 		return "lesson05/ex02";
 	}
+	
+
+	// 5-3 날짜 형식과 String 함수
+	@GetMapping("/ex03")
+	public String ex03(Model model) {
+		
+		Date date = new Date();
+		model.addAttribute("date", date);
+		
+		LocalDate localDate = LocalDate.now();
+		model.addAttribute("localdate", localDate);
+
+		LocalDateTime localDateTime = LocalDateTime.now();
+		model.addAttribute("localDateTime", localDateTime);
+		
+		// UTC Time
+		ZonedDateTime zonedDateTime = ZonedDateTime.now();
+		model.addAttribute("zonedDateTime", zonedDateTime);
+		
+		return "lesson05/ex03";
+	}
+	
+	
 }
