@@ -44,6 +44,18 @@
 				`id` DESC
 			LIMIT 1
 		</select>
+		
+		
+		<!-- 6-2 : AJAX로 아이디 중복확인 -->
+		<select id="isDuplicatedName" parameterType="String" resultType="boolean">
+			SELECT
+				COUNT(*)
+			FROM
+				`new_user`
+			WHERE
+				`name` = #{name}
+		</select>
+		
 	</mapper>
 	
 	

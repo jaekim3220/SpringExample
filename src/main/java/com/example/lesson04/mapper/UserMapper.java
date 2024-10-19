@@ -31,4 +31,10 @@ public interface UserMapper {
 	// MVC Cycle 4-2 예제 : (방금 가입한 학생의 id pk 가져오기)
 	public User selectLatestUser();
 	
+	
+	// input : name
+	// output : boolean t:중복 f:중복 아님
+	// 6-2 : AJAX로 아이디 중복확인
+	public boolean isDuplicatedName(String name);
+	
 }

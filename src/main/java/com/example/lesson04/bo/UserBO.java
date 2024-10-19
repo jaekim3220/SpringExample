@@ -36,4 +36,12 @@ public class UserBO {
 	public User getLatestUser() {
 		return userMapper.selectLatestUser();
 	}
+	
+	
+	// input : name
+	// output : boolean t:중복 f:중복 아님
+	// 6-2 : AJAX로 아이디 중복확인
+	public boolean isDuplicatedName(String name) {
+		return userMapper.isDuplicatedName(name);
+	}
 }
