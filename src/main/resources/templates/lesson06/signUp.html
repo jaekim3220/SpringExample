@@ -60,6 +60,7 @@
 					data:{"name":name},
 					
 					// response
+					// Ajax 성공
 					success:function(data) { // Dictionary
 						// Ajax의 응답은 String => JQuery의 함수가 JSON임을 알면
 						// => Dictionary 형식으로 변경
@@ -70,13 +71,14 @@
 							$("#nameStatusArea").append('<span class="text-danger">중복된 이름입니다.</span>');
 							
 						}
-					},
+					}, // Ajax 성공 종료
+					// Ajax 실패
 					error:function(e) {
 						alert("이름 중복 확인에 실패했습니다.")
 					}
-				});
+				}); // AJAX - 이름 중복 확인 종료
 				
-			});
+			}); // 중복확인 클릭 종료
 			
 
 			// 회원가입 - 중복확인 마쳤는지 validation
