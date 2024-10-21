@@ -39,7 +39,7 @@ public class UserBO {
 	
 	
 	// input : name
-	// output : boolean t:중복 f:중복 아님
+	// output : boolean t(0이 아닌 수):중복 f(0):중복 아님
 	// 6-2 : AJAX로 아이디 중복확인
 	public boolean isDuplicatedName(String name) {
 		return userMapper.isDuplicatedName(name);

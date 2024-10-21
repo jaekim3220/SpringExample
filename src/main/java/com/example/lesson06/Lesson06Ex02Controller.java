@@ -52,6 +52,7 @@ public class Lesson06Ex02Controller {
 			@RequestParam("name") String name) {
 		
 		// DB SELECT
+		// boolean t(0이 아닌 수):중복 f(0):중복 아님
 		boolean isDuplicated = userBO.isDuplicatedName(name);
 		
 		

@@ -47,6 +47,7 @@
 		
 		
 		<!-- 6-2 : AJAX로 아이디 중복확인 -->
+		<!-- boolean t(0이 아닌 수):중복 f(0):중복 아님 -->
 		<select id="isDuplicatedName" parameterType="String" resultType="boolean">
 			SELECT
 				COUNT(*)
