@@ -33,7 +33,7 @@ public class Lesson07Ex01RestController {
 	private StudentBo studentBO;
 	
 	
-	// C : create
+	// C : Create
 	@GetMapping("/create")
 	// localhost/lesson07/ex01/create
 	public StudentEntity create() {
@@ -44,6 +44,13 @@ public class Lesson07Ex01RestController {
 		
 		// save된 객체를 return하므로 id가 채워져있음
 		return studentBO.addStudent(name, phoneNumber, email, dreamJob);
+	}
+	
+	// U : Update
+	@GetMapping("/update")
+	public StudentEntity update() {
+		// id가 4인 dreamJob을 경찰로 변경
+		return studentBO.updateStudentById(5, "경찰");
 	}
 	
 }
