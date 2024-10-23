@@ -1,10 +1,14 @@
 package com.example.lesson04.bo;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.lesson04.domain.Student;
 import com.example.lesson04.mapper.StudentMapper;
+import com.example.lesson07.entity.StudentEntity;
+import com.example.lesson07.repository.StudentRepository;
 
 /*
 DB연동 : View영역 <--> Controller영역(Domain) <--> Service(BO)영역 <--> Repository영역(Mapper) <--> DB영역 
@@ -17,7 +21,28 @@ public class StudentBo {
 	
 	@Autowired
 	private StudentMapper studentmapper;
+	
+	@Autowired
+	private StudentRepository studentRepository;
 
+	// JPA
+	public StudentEntity addStudent(
+			String name, String phoneNumber,
+			String email, String dreamjob) {
+		
+		StudentEntity student = StudentEntity.builder()
+				.name(name)
+				.phoneNumber(phoneNumber)
+				.email(email)
+				.dreamjob(dreamjob)
+				.createdAt(LocalDateTime.now()) // @CreationTimestamp 있으면 생략 가능
+				.build();
+		
+		return studentRepository.save(student);
+	}
+	
+	
+	// MyBatis
 	// input : Student 데이터
 	// output : int or void
 	// 방금 가입한 학생의 id pk 가져오기 (고급) - 방금 가입한 학생
