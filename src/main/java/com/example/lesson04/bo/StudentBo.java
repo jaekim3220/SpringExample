@@ -21,26 +21,7 @@ public class StudentBo {
 	
 	@Autowired
 	private StudentMapper studentmapper;
-	
-	@Autowired
-	private StudentRepository studentRepository;
 
-	// JPA
-	public StudentEntity addStudent(
-			String name, String phoneNumber,
-			String email, String dreamjob) {
-		
-		StudentEntity student = StudentEntity.builder()
-				.name(name)
-				.phoneNumber(phoneNumber)
-				.email(email)
-				.dreamjob(dreamjob)
-				.createdAt(LocalDateTime.now()) // @CreationTimestamp 있으면 생략 가능
-				.build();
-		
-		return studentRepository.save(student);
-	}
-	
 	
 	// MyBatis
 	// input : Student 데이터
@@ -52,10 +33,56 @@ public class StudentBo {
 	}
 	
 	
+	// MyBatis
 	// input : Student id 데이터
 	// output : Student 데이터
 	public Student getStudentById(int id) {
 		return studentmapper.selectStudentById(id);
 	}
+	
+	
+	/*JPA*/
+	
+	@Autowired
+	private StudentRepository studentRepository;
+
+	// JPA - Create
+	public StudentEntity addStudent(
+			String name, String phoneNumber,
+			String email, String dreamJob) {
+		
+		StudentEntity student = StudentEntity.builder()
+				.name(name)
+				.phoneNumber(phoneNumber)
+				.email(email)
+				.dreamJob(dreamJob)
+				.createdAt(LocalDateTime.now()) // @CreationTimestamp 있으면 생략 가능
+				.build();
+		
+		return studentRepository.save(student);
+	}
+	
+	
+	// JPA - UPDATE
+	public StudentEntity updateStudentDreamById(
+			int id, String dreamJob) {
+		// 기존 데이터 조회 - id로 entity 조회
+		StudentEntity student = studentRepository.findById(id).orElse(null);
+		
+		// update - JPA는 save 메서드를 사용(INSERT, UPDATE)
+		// 조회된 데이터가 존재할 때 업데이트 진행
+		if (student != null) {
+			
+			// 변경할 내용을 엔티티에 설정 후 save(id가 존재) update
+			student = student.toBuilder()
+			.dreamJob(dreamJob)
+			.build();
+			
+			student = studentRepository.save(student); // 설정 후 다시 변수에 담으면 URL을 사용해 updated 정보도 조회 가능
+		}
+		
+		return student;
+	}
+	
 	
 }

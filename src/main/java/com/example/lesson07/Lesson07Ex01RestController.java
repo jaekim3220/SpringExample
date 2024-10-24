@@ -48,9 +48,10 @@ public class Lesson07Ex01RestController {
 	
 	// U : Update
 	@GetMapping("/update")
+	// localhost/lesson07/ex01/update
 	public StudentEntity update() {
 		// id가 4인 dreamJob을 경찰로 변경
-		return studentBO.updateStudentById(5, "경찰");
+		return studentBO.updateStudentDreamById(4, "군인");
 	}
 	
 }
