@@ -9,4 +9,5 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
 	// public StudentEntity save(StudentEntity studentEntity); - Create
 	// public StudentEntity findById(int id); - Update
 	// => public Optional<StudentEntity> findById(int id); - Update
+	// public void delete(StudentEntity studentEntity); - Delete
 }

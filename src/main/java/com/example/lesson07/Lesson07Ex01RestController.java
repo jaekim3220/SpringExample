@@ -54,4 +54,14 @@ public class Lesson07Ex01RestController {
 		return studentBO.updateStudentDreamById(4, "군인");
 	}
 	
+	
+	// D : Delete
+	@GetMapping("/delete")
+	// http://localhost/lesson07/ex01/delete
+	public String  delete() {
+		// id 5번 삭제
+		studentBO.deleteStudentById(5); // return 값 없음
+		return "삭제완료";
+	}
+	
 }
