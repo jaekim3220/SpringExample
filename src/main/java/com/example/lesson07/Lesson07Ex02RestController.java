@@ -68,4 +68,13 @@ public class Lesson07Ex02RestController {
 		return studentRepository.findByIdBetween(2, 3);
 	}
 	
+	
+	// 예제2)
+	@GetMapping("/select2")
+	// http://localhost/lesson07/ex02/select2
+	public List<StudentEntity> select2() {
+		// 장래희망이 특정 값인 행 조회
+		return studentRepository.findBydreamJob("변호사");
+	}
+	
 }
